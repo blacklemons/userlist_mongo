@@ -1,0 +1,44 @@
+{% extends 'layout.html' %} 
+
+    {% block body %}
+    <div class="jumbotron">
+        <h1 class="display-4">ARTICLES</h1>
+        <p>
+          <table border='1' height="150" >
+            <thead>
+                <tr align ="center">
+                    <th>index</th>
+                    <th>TITLE</th>
+                    <th>AUTHOR</th>
+                    <th>DATE</th>
+                    <th>EDIT</th>
+                    <th>DELETE</th>
+                </tr>
+            </thead>
+            <tbody>
+              <ul>
+                {% for article in articles %}
+                <tr align = "center">
+                  <td><a href='/article/{{loop.index0}}'>{{loop.index}}</a></td>
+                  <td>{{article[1]['title']}}</td>
+                  <td>{{article[1]['author']}}</td>
+                  <td>{{article[1]['edit']}}</td>
+                  {% if (session['username'] == 'admin') or (session['username'] == article[1]['author']) %}
+                  <td><a class="btn btn-primary" href="/article/{{loop.index0}}/edit" role="button">EDIT</a>
+                  </td>
+                  <td><a class="btn btn-primary" href="/article/{{loop.index0}}/delete"
+                    role="button" onclick="return confirm('정말 삭제하시겠습니까?')">DELETE</a>
+                  </td>
+                  {% endif %}
+                </tr>
+                {% endfor %}
+              </ul>           
+            </tbody>
+      </table>
+    </body>
+    </html>
+        </p>
+        <a class="btn btn-primary" href="/add_article" role="button">추가하기</a>
+      </div>
+    
+    {% endblock %} 

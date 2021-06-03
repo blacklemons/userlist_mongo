@@ -1,0 +1,14 @@
+{% extends 'layout.html' %} 
+​
+    {% block body %} 
+    <div class="jumbotron">
+        <h1 class="display-4">ABOUT</h1>
+        <form action="/add_article" method="POST">
+            제목 : <input type="text" name="title"><br>
+            내용 : <input type="text" name="description"><br>
+            <input type="submit">
+        </form>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+      </div>
+{% endblock %} 
+​

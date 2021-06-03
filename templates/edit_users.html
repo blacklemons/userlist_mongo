@@ -1,0 +1,15 @@
+{% extends 'layout.html' %} 
+
+    {% block body %} 
+    <div class="jumbotron">
+        <h1 class="display-4">ARTICLE No_{{id}}</h1>
+         
+        <form action="/admin/{{id}}/edit" method="POST">
+            NAME : <input type="text" value="{{user['name']}}" name="name"><br>
+            USERNAME : <input type="text" value="{{user['username']}}" name="username"><br>
+            <input type="submit" value="저장">
+        </form>
+
+        <a class="btn btn-primary btn-lg" href="/admin" role="button">취소</a>
+      </div>
+    {% endblock %} 
